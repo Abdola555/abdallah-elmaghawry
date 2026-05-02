@@ -279,28 +279,35 @@ function Portfolio() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="relative flex justify-center">
-                {/* Soft glow / colored disc behind the portrait — looks great with a transparent PNG */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-blue-400 via-indigo-500 to-blue-700 blur-2xl opacity-40"></div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-500 to-indigo-700 opacity-90 shadow-2xl"></div>
-                </div>
-                <img
-                  src={abdallahPhoto}
-                  alt="Abdallah Elmaghawry"
-                  className="relative w-72 h-72 md:w-96 md:h-96 object-contain object-bottom drop-shadow-2xl"
-                />
-                <div className="absolute -bottom-2 -right-2 md:-right-4 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <div className="flex justify-center">
+                {/* Fixed-size square wrapper keeps the portrait perfectly centered
+                    inside the hero column, regardless of the badge offset. */}
+                <div className="relative w-56 h-56 md:w-72 md:h-72">
+                  {/* Soft outer glow — slightly larger than the disc */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-400 via-indigo-500 to-blue-700 blur-2xl opacity-40"></div>
                   </div>
-                  <p className="mt-2 text-sm font-medium text-gray-700">
-                    Altium · LTspice · MATLAB
-                  </p>
+                  {/* Solid colored disc behind the portrait */}
+                  <div className="absolute inset-2 flex items-center justify-center">
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-500 to-indigo-700 opacity-90 shadow-2xl"></div>
+                  </div>
+                  {/* The portrait itself — same size as wrapper, centered content */}
+                  <img
+                    src={abdallahPhoto}
+                    alt="Abdallah Elmaghawry"
+                    className="relative w-full h-full object-contain object-center drop-shadow-2xl"
+                  />
+                  {/* Tools badge — anchored to the wrapper, no longer pushes layout */}
+                  <div className="absolute -bottom-3 -right-3 bg-white p-3 rounded-xl shadow-xl border border-gray-100">
+                    <div className="flex space-x-2">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                    </div>
+                    <p className="mt-1.5 text-xs font-medium text-gray-700">
+                      Altium · LTspice · MATLAB
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
