@@ -815,7 +815,14 @@ function Portfolio() {
                       <Github className="h-5 w-5 text-blue-400 mr-3" />
                       GitHub
                     </h3>
-                    <p className="text-gray-300">Add your GitHub URL here</p>
+                    <a
+                      href="https://github.com/Abdola555"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-300 hover:text-blue-300 break-all"
+                    >
+                      github.com/Abdola555
+                    </a>
                   </div>
                   <div className="pt-4 border-t border-gray-700">
                     <h3 className="text-xl font-bold mb-2 flex items-center">
@@ -930,7 +937,13 @@ function Portfolio() {
               >
                 <Mail className="h-6 w-6" />
               </a>
-              <a href="#" className="hover:text-blue-400 transition-colors" aria-label="GitHub">
+              <a
+                href="https://github.com/Abdola555"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+                aria-label="GitHub"
+              >
                 <Github className="h-6 w-6" />
               </a>
             </div>
