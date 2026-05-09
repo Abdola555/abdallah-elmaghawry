@@ -157,9 +157,9 @@ export default function Hero() {
               Power electronics specialist building robust SMPS, BMS, and battery systems
               from first principles to mass production.{' '}
               <span style={{ color: 'var(--color-text)' }}>
-                8+ years of hands-on hardware R&amp;D
+                4+ years of professional R&amp;D
               </span>{' '}
-              from robotics to YC-backed startups.
+              — from first in-house SMPS at ELARABY to BMS at Pylon (YC S21).
             </motion.p>
 
             {/* CTAs */}
@@ -246,7 +246,7 @@ export default function Hero() {
 
             {/* Stat chips */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-2 justify-center md:justify-start">
-              <StatChip value="4+" label="yrs R&D" />
+              <StatChip value="4+" label="yrs pro R&D" />
               <StatChip value="~40%" label="BOM cut" />
               <StatChip value="YC S21" label="startup" />
               <StatChip value="M.Sc." label="in progress" />

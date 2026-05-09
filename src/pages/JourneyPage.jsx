@@ -77,8 +77,8 @@ export default function JourneyPage() {
     <div className="max-w-4xl mx-auto px-6 py-16 space-y-16">
       <SectionTitle
         eyebrow="My Journey"
-        title="8 Years in Hardware"
-        subtitle="From robotics competitions to YC-backed startups — the full arc of an engineer."
+        title="4+ Years in Professional R&D"
+        subtitle="From university robotics competitions to leading BMS and SMPS development at a YC-backed startup."
       />
 
       {/* ── Education (prominent, leads the page) ── */}
