@@ -10,9 +10,15 @@ export default function ContactPage() {
         title="Let's Connect"
         subtitle="Open to power electronics discussions, EV/BMS collaboration, research partnerships, and hiring enquiries."
       />
-      <div className="mb-8">
+      <div className="mb-8 space-y-3">
         <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
-          I'm {profile.name}, a Senior R&D Hardware Electronics Engineer based in {profile.location}.
+          I'm {profile.name} — Senior Hardware Engineer based in {profile.location}, specializing in
+          power electronics and battery systems. My work spans SMPS design, magnetics, EMI/EMC,
+          and full hardware validation cycles including factory qualification in China.
+        </p>
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+          I'm particularly interested in electric vehicles, battery management systems, and advanced
+          power conversion — and open to collaboration in both industry and research.
           The best way to reach me is via email or LinkedIn. I respond within 48 hours.
         </p>
       </div>

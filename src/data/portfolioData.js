@@ -12,7 +12,7 @@ export const profile = {
   portfolio: "https://abdola555.github.io/abdallah-elmaghawry/",
   avatarUrl: "https://avatars.githubusercontent.com/Abdola555",
   summary:
-    "Power electronics specialist with 4+ years of professional R&D — designing and validating SMPS, flyback converters, and battery management systems from concept to mass production. Currently at Pylon (YC S21), leading BMS for LFP packs and three-phase smart-meter SMPS. M.Sc. researcher in AI-based battery SOH estimation for EV applications.",
+    "Senior Hardware Engineer specializing in power electronics — designing and validating SMPS, flyback, LLC, and three-phase power systems from concept to mass production. Strong depth in magnetics design, EMI/EMC, and factory qualification, including on-site vendor audits in China. Currently at Pylon (YC S21) leading BMS for LFP packs. Pursuing an M.Sc. at Cairo University on AI-based battery SOH estimation for EV applications.",
 };
 
 export const contactChannels = [

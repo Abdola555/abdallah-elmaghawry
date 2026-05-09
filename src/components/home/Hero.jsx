@@ -154,12 +154,13 @@ export default function Hero() {
               className="text-base md:text-lg max-w-xl mb-8 leading-relaxed"
               style={{ color: 'var(--color-muted)' }}
             >
-              Power electronics specialist building robust SMPS, BMS, and battery systems
-              from first principles to mass production.{' '}
-              <span style={{ color: 'var(--color-text)' }}>
-                4+ years of professional R&amp;D
-              </span>{' '}
-              — from first in-house SMPS at ELARABY to BMS at Pylon (YC S21).
+              Designing and validating{' '}
+              <span style={{ color: 'var(--color-text)' }}>SMPS, flyback, LLC, and three-phase power systems</span>
+              {' '}from schematic to mass production. Deep in magnetics, EMI/EMC, and factory qualification —
+              including on-site vendor audits in China.
+              Currently leading BMS for LFP packs at{' '}
+              <span style={{ color: 'var(--color-text)' }}>Pylon (YC S21)</span>
+              {' '}while pursuing an M.Sc. on AI-based battery SOH estimation for EVs.
             </motion.p>
 
             {/* CTAs */}
