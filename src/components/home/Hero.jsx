@@ -249,7 +249,7 @@ export default function Hero() {
             <motion.div variants={fadeUp} className="flex flex-wrap gap-2 justify-center md:justify-start">
               <StatChip value="4+" label="yrs pro R&D" />
               <StatChip value="~40%" label="BOM cut" />
-              <StatChip value="YC S21" label="startup" />
+              <StatChip value="4" label="languages" />
               <StatChip value="M.Sc." label="in progress" />
             </motion.div>
           </motion.div>
