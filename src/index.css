@@ -1,1 +1,53 @@
 @import "tailwindcss";
+@import "@fontsource/syne/700.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/jetbrains-mono/400.css";
+
+@theme {
+  --color-bg: #0A0E1A;
+  --color-primary: #00E5C7;
+  --color-accent: #F0A500;
+  --color-text: #E5E7EB;
+  --color-muted: #9CA3AF;
+  --color-surface: #111827;
+  --color-border: rgba(0, 229, 199, 0.15);
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #0A0E1A;
+  color: #E5E7EB;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.grid-backdrop {
+  background-image:
+    linear-gradient(to right, rgba(0, 229, 199, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.glow-cyan {
+  filter: drop-shadow(0 0 4px #00E5C7) drop-shadow(0 0 10px rgba(0, 229, 199, 0.4));
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .glow-cyan { filter: none; }
+}
