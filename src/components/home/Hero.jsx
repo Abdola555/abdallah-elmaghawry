@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router'
 import abdallahPhoto from '../../assets/abdallah.png'
@@ -86,7 +85,6 @@ function HexRing({ prefersReduced }) {
 
 export default function Hero() {
   const prefersReduced = useReducedMotion()
-  const scrollRef = useRef(null)
 
   function handleViewProjects(e) {
     e.preventDefault()

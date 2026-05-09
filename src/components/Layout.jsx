@@ -3,8 +3,10 @@ import { Outlet } from 'react-router'
 import NavBar from './nav/NavBar.jsx'
 import Footer from './Footer.jsx'
 import ContactPanel from './contact/ContactPanel.jsx'
+import { useScrollRestoration } from '../lib/useScrollRestoration.js'
 
 export default function Layout() {
+  useScrollRestoration()
   const [contactOpen, setContactOpen] = useState(false)
   const ctaRef = useRef(null)
 

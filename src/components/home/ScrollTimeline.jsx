@@ -276,11 +276,6 @@ export default function ScrollTimeline() {
     offset: ['start start', 'end end'],
   })
 
-  // If reduced motion, use a fixed constant progress
-  const displayProgress = prefersReduced
-    ? { get: () => 1, subscribe: () => () => {} }
-    : scrollYProgress
-
   return (
     <section
       ref={trackRef}
