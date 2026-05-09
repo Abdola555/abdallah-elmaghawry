@@ -195,12 +195,13 @@ export const featuredProjects = [
   },
 ];
 
-export const experienceTimeline = [
+export const workExperience = [
   {
     period: "Nov 2025 – Present",
     role: "Senior R&D Hardware Electronics Engineer",
     company: "Pylon (YC S21)",
-    location: "Alexandria, Egypt (Hybrid)",
+    location: "Alexandria, Egypt · Hybrid",
+    type: "Full-time",
     bullets: [
       "Developing BMS for LFP packs using TI AFE and fuel-gauge ICs",
       "Implementing OV/UV/OC protection with SOC/SOH estimation workflows",
@@ -213,7 +214,8 @@ export const experienceTimeline = [
     period: "Jan 2024 – Nov 2025",
     role: "Senior Hardware Engineer",
     company: "ELARABY Group",
-    location: "Egypt (Hybrid)",
+    location: "Egypt · Hybrid",
+    type: "Full-time",
     bullets: [
       "Executed on-site validation testing and vendor technical audits in China (two residencies)",
       "Directed hardware development from schematic through final assembly",
@@ -225,34 +227,78 @@ export const experienceTimeline = [
     role: "R&D Hardware Electronics Engineer",
     company: "ELARABY Group",
     location: "Egypt",
+    type: "Full-time",
     bullets: [
       "Designed 75W quasi-resonant flyback converter — first in-house SMPS",
       "Co-designed 150W dual-flyback TV PSU with PFC front-end",
       "Performed LLC design calculations and compliance-focused checks",
     ],
   },
+];
+
+export const freelanceExperience = [
   {
     period: "Dec 2020 – Oct 2021",
-    role: "Data Analyst (Freelance)",
+    role: "Data Analyst",
     company: "PeoplePerHour",
     location: "Remote",
+    type: "Freelance",
     bullets: [
-      "Data analytics and preprocessing using Python (pandas)",
+      "Data cleaning and preprocessing using Python (pandas)",
       "Real-world data problems across multiple client engagements",
+      "Built skills in data analysis while transitioning into hardware R&D",
     ],
   },
+];
+
+export const industrialTraining = [
+  {
+    period: "Aug 2018 – Sep 2018",
+    role: "Industrial Trainee",
+    company: "ABU QIR Fertilizers and Chemicals Industries",
+    location: "Egypt",
+    bullets: [
+      "Generating electricity from synchronous generators and controlling them",
+      "Practical exposure to industrial-scale electrical systems",
+    ],
+  },
+  {
+    period: "Aug 2019",
+    role: "Industrial Trainee",
+    company: "Alexandria Petroleum Maintenance Co.",
+    location: "Alexandria, Egypt",
+    bullets: [
+      "Shadowed field technicians on preventive and corrective maintenance",
+      "Exposure to petroleum sector electrical and instrumentation systems",
+    ],
+  },
+  {
+    period: "Aug 2019",
+    role: "Industrial Trainee",
+    company: "Alexandria Electricity Distribution Company",
+    location: "Alexandria, Egypt",
+    bullets: [
+      "Observed distribution network operations and control systems",
+      "Exposure to medium-voltage switchgear and protection relays",
+    ],
+  },
+];
+
+export const competitionsAndVolunteer = [
   {
     period: "Jun 2017 – Dec 2020",
     role: "Electrical Engineer",
     company: "M.I.A. Robotics",
     location: "Alexandria, Egypt",
     bullets: [
-      "Robotics competitions: PCB design, system integration, embedded control",
+      "PCB design, system integration, and embedded control for competition robots",
       "1st place — 5th Annual 'Let's Make A Robot' Competition (Sep 2017)",
-      "Participated in Minesweeper 2019 competition",
+      "Participated in Minesweeper 2019 autonomous robot competition",
     ],
   },
 ];
+
+export const experienceTimeline = [...workExperience];
 
 export const insights = [
   {

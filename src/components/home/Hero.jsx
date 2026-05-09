@@ -245,10 +245,11 @@ export default function Hero() {
             </motion.div>
 
             {/* Stat chips */}
-            <motion.div variants={fadeUp} className="flex gap-2">
-              <StatChip value="8+" label="years" />
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-2 justify-center md:justify-start">
+              <StatChip value="4+" label="yrs R&D" />
               <StatChip value="~40%" label="BOM cut" />
               <StatChip value="YC S21" label="startup" />
+              <StatChip value="M.Sc." label="in progress" />
             </motion.div>
           </motion.div>
         </div>
