@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router'
 import abdallahPhoto from '../../assets/abdallah.png'
 
-const AVATAR_URL = 'https://avatars.githubusercontent.com/Abdola555'
+const AVATAR_URL = abdallahPhoto
 
 const containerVariants = {
   hidden: {},
@@ -240,7 +240,6 @@ export default function Hero() {
                   src={AVATAR_URL}
                   alt="Abdallah El-Maghawry"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  onError={e => { e.currentTarget.src = abdallahPhoto }}
                 />
               </div>
             </motion.div>
