@@ -2,44 +2,52 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router'
 import abdallahPhoto from '../../assets/abdallah.png'
 
-const AVATAR_URL = abdallahPhoto
-
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.05 },
   },
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 }
 
 const fadeIn = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.55, ease: 'easeOut' } },
+  visible: { opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
 }
 
-function StatChip({ value, label }) {
+function StatBlock({ value, label }) {
   return (
     <div
-      className="flex flex-col items-center px-4 py-2 rounded"
+      className="flex flex-col px-5 py-4 rounded-xl flex-1"
       style={{
+        background: 'var(--color-surface)',
         border: '1px solid var(--color-border)',
-        background: 'rgba(0,229,199,0.04)',
-        minWidth: '72px',
+        minWidth: '80px',
       }}
     >
       <span
-        className="text-base font-bold leading-none"
-        style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary)' }}
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontWeight: 700,
+          fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+          color: 'var(--color-primary)',
+          lineHeight: 1,
+        }}
       >
         {value}
       </span>
       <span
-        className="text-xs mt-0.5 text-center"
-        style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-muted)', fontSize: '0.6rem' }}
+        style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.65rem',
+          color: 'var(--color-muted)',
+          marginTop: '4px',
+          lineHeight: 1.3,
+        }}
       >
         {label}
       </span>
@@ -54,30 +62,27 @@ function HexRing({ prefersReduced }) {
       className="absolute inset-0 w-full h-full pointer-events-none"
       aria-hidden="true"
     >
-      {/* Outer hex ring */}
       <motion.polygon
         points="100,10 180,55 180,145 100,190 20,145 20,55"
         fill="none"
-        stroke="rgba(0,229,199,0.25)"
+        stroke="rgba(0,229,199,0.18)"
         strokeWidth="1"
         animate={prefersReduced ? {} : { rotate: 360 }}
-        transition={{ duration: 30, ease: 'linear', repeat: Infinity }}
+        transition={{ duration: 36, ease: 'linear', repeat: Infinity }}
         style={{ originX: '100px', originY: '100px' }}
       />
-      {/* Inner hex ring — counter-rotation */}
       <motion.polygon
         points="100,28 166,65 166,135 100,172 34,135 34,65"
         fill="none"
-        stroke="rgba(0,229,199,0.12)"
+        stroke="rgba(0,229,199,0.08)"
         strokeWidth="0.75"
         strokeDasharray="4 6"
         animate={prefersReduced ? {} : { rotate: -360 }}
-        transition={{ duration: 22, ease: 'linear', repeat: Infinity }}
+        transition={{ duration: 24, ease: 'linear', repeat: Infinity }}
         style={{ originX: '100px', originY: '100px' }}
       />
-      {/* Corner accent dots */}
       {[[100, 10], [180, 55], [180, 145], [100, 190], [20, 145], [20, 55]].map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r="2.5" fill="rgba(0,229,199,0.4)" />
+        <circle key={i} cx={x} cy={y} r="2" fill="rgba(0,229,199,0.35)" />
       ))}
     </svg>
   )
@@ -98,47 +103,54 @@ export default function Hero() {
 
   return (
     <section
-      className="grid-backdrop relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="grid-backdrop relative min-h-screen flex items-center overflow-hidden"
       style={{ background: 'var(--color-bg)' }}
     >
       {/* Ambient glow */}
       <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        className="absolute pointer-events-none"
         style={{
-          width: '600px',
-          height: '400px',
-          background: 'radial-gradient(ellipse at center, rgba(0,229,199,0.06) 0%, transparent 70%)',
-          filter: 'blur(40px)',
+          top: '40%',
+          left: '30%',
+          width: '700px',
+          height: '500px',
+          background: 'radial-gradient(ellipse at center, rgba(0,229,199,0.05) 0%, transparent 65%)',
+          filter: 'blur(48px)',
+          transform: 'translate(-50%, -50%)',
         }}
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-12 py-20 md:py-28">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-12 py-16">
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
 
-          {/* ── LEFT COLUMN ── */}
+          {/* ── LEFT COLUMN (60%) ── */}
           <motion.div
-            className="flex-1 flex flex-col items-center md:items-start text-center md:text-left"
+            className="flex-[3] flex flex-col items-center md:items-start text-center md:text-left"
             variants={containerVariants}
             {...motionProps}
           >
             {/* Eyebrow */}
             <motion.p
               variants={fadeIn}
-              className="mb-5 text-xs tracking-[0.18em] uppercase"
-              style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-primary)' }}
+              className="mb-4 tracking-[0.15em]"
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                color: 'var(--color-primary)',
+              }}
             >
-              // Senior R&amp;D Hardware Electronics Engineer @ Pylon (YC S21)
+              // Senior R&amp;D Hardware Engineer @ Pylon (YC S21)
             </motion.p>
 
             {/* Name */}
             <motion.h1
               variants={fadeUp}
-              className="leading-none tracking-tight mb-6"
+              className="leading-none tracking-tight mb-5"
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
-                fontSize: 'clamp(3.2rem, 8vw, 5.25rem)',
+                fontSize: 'clamp(3rem, 7.5vw, 5rem)',
                 color: 'var(--color-text)',
                 letterSpacing: '-0.03em',
               }}
@@ -148,41 +160,61 @@ export default function Hero() {
               <span style={{ color: 'var(--color-primary)' }}>El-Maghawry</span>
             </motion.h1>
 
-            {/* Summary */}
+            {/* Role pill */}
+            <motion.div variants={fadeUp} className="mb-6">
+              <span
+                className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold"
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  border: '1px solid rgba(0,229,199,0.35)',
+                  background: 'rgba(0,229,199,0.07)',
+                  color: 'var(--color-primary)',
+                  letterSpacing: '0.04em',
+                }}
+              >
+                Power Electronics · SMPS · BMS · PCB Design
+              </span>
+            </motion.div>
+
+            {/* 2-line summary */}
             <motion.p
               variants={fadeUp}
-              className="text-base md:text-lg max-w-xl mb-8 leading-relaxed"
-              style={{ color: 'var(--color-muted)' }}
+              className="max-w-lg mb-8 leading-relaxed"
+              style={{ color: 'var(--color-muted)', fontSize: '1rem', lineHeight: 1.7 }}
             >
               Designing and validating{' '}
-              <span style={{ color: 'var(--color-text)' }}>SMPS, flyback, LLC, and three-phase power systems</span>
-              {' '}from schematic to mass production. Deep in magnetics, EMI/EMC, and factory qualification —
-              including on-site vendor audits in China.
-              Currently leading BMS for LFP packs at{' '}
-              <span style={{ color: 'var(--color-text)' }}>Pylon (YC S21)</span>
-              {' '}while pursuing an M.Sc. on AI-based battery SOH estimation for EVs.
+              <span style={{ color: 'var(--color-text)', fontWeight: 500 }}>SMPS, BMS, and PCB systems</span>
+              {' '}from schematic to mass production — including{' '}
+              <span style={{ color: 'var(--color-text)', fontWeight: 500 }}>on-site vendor audits in China.</span>
             </motion.p>
+
+            {/* Stat blocks */}
+            <motion.div variants={fadeUp} className="flex gap-3 w-full max-w-lg mb-8">
+              <StatBlock value="4+" label="Years Pro R&D" />
+              <StatBlock value="~40%" label="BOM Reduction" />
+              <StatBlock value="4" label="Languages" />
+            </motion.div>
 
             {/* CTAs */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3 justify-center md:justify-start">
               <a
                 href="#projects"
                 onClick={handleViewProjects}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded text-sm font-semibold transition-all duration-200"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-lg text-sm font-bold transition-all duration-200"
                 style={{
                   background: 'var(--color-accent)',
                   color: '#0A0E1A',
                   fontFamily: 'var(--font-display)',
                   fontWeight: 700,
                   letterSpacing: '0.01em',
-                  boxShadow: '0 0 16px rgba(240,165,0,0.3)',
+                  boxShadow: '0 0 20px rgba(240,165,0,0.35)',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.boxShadow = '0 0 24px rgba(240,165,0,0.5)'
-                  e.currentTarget.style.transform = 'translateY(-1px)'
+                  e.currentTarget.style.boxShadow = '0 0 30px rgba(240,165,0,0.55)'
+                  e.currentTarget.style.transform = 'translateY(-2px)'
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.boxShadow = '0 0 16px rgba(240,165,0,0.3)'
+                  e.currentTarget.style.boxShadow = '0 0 20px rgba(240,165,0,0.35)'
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >
@@ -190,9 +222,9 @@ export default function Hero() {
               </a>
               <Link
                 to="/journey"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded text-sm font-semibold transition-all duration-200"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-lg text-sm font-bold transition-all duration-200"
                 style={{
-                  border: '1px solid rgba(0,229,199,0.4)',
+                  border: '1px solid rgba(0,229,199,0.35)',
                   color: 'var(--color-primary)',
                   fontFamily: 'var(--font-display)',
                   fontWeight: 700,
@@ -200,12 +232,12 @@ export default function Hero() {
                 }}
                 onMouseEnter={e => {
                   e.currentTarget.style.background = 'rgba(0,229,199,0.1)'
-                  e.currentTarget.style.borderColor = 'rgba(0,229,199,0.7)'
-                  e.currentTarget.style.transform = 'translateY(-1px)'
+                  e.currentTarget.style.borderColor = 'rgba(0,229,199,0.65)'
+                  e.currentTarget.style.transform = 'translateY(-2px)'
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.background = 'rgba(0,229,199,0.05)'
-                  e.currentTarget.style.borderColor = 'rgba(0,229,199,0.4)'
+                  e.currentTarget.style.borderColor = 'rgba(0,229,199,0.35)'
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >
@@ -214,45 +246,71 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT COLUMN ── */}
+          {/* ── RIGHT COLUMN (40%) ── */}
           <motion.div
-            className="flex flex-col items-center gap-5 flex-shrink-0"
+            className="flex-[2] flex flex-col items-center gap-5 flex-shrink-0"
             variants={containerVariants}
             {...motionProps}
           >
-            {/* Avatar with hex ring */}
-            <motion.div variants={fadeIn} className="relative" style={{ width: '220px', height: '220px' }}>
+            {/* Large photo with hex ring */}
+            <motion.div
+              variants={fadeIn}
+              className="relative"
+              style={{ width: '320px', height: '360px' }}
+            >
               <HexRing prefersReduced={prefersReduced} />
+              {/* Photo */}
               <div
-                className="absolute inset-0 m-auto overflow-hidden"
                 style={{
-                  width: '152px',
-                  height: '152px',
+                  position: 'absolute',
                   top: '50%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
+                  width: '280px',
+                  height: '320px',
                   borderRadius: '16px',
-                  border: '2px solid rgba(0,229,199,0.3)',
-                  boxShadow: '0 0 24px rgba(0,229,199,0.15)',
-                  position: 'absolute',
+                  overflow: 'hidden',
+                  border: '2px solid rgba(0,229,199,0.25)',
+                  boxShadow: '0 0 32px rgba(0,229,199,0.12), 0 16px 48px rgba(0,0,0,0.4)',
                 }}
               >
                 <img
-                  src={AVATAR_URL}
+                  src={abdallahPhoto}
                   alt="Abdallah El-Maghawry"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
               </div>
             </motion.div>
 
-            {/* Stat chips */}
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-2 justify-center md:justify-start">
-              <StatChip value="4+" label="yrs pro R&D" />
-              <StatChip value="~40%" label="BOM cut" />
-              <StatChip value="4" label="languages" />
-              <StatChip value="M.Sc." label="in progress" />
+            {/* Degree badge below photo */}
+            <motion.div
+              variants={fadeUp}
+              className="flex items-start gap-3 px-4 py-3 rounded-xl w-full max-w-[280px]"
+              style={{
+                background: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+              }}
+            >
+              <div
+                className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
+                style={{ background: 'rgba(0,229,199,0.1)', border: '1px solid rgba(0,229,199,0.25)' }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+              <div>
+                <p style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.8rem', color: 'var(--color-text)', lineHeight: 1.3 }}>
+                  M.Sc. in Power Electronics
+                </p>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--color-muted)', marginTop: '2px' }}>
+                  Cairo University · In Progress
+                </p>
+              </div>
             </motion.div>
           </motion.div>
+
         </div>
       </div>
 
@@ -261,12 +319,17 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
         initial={{ opacity: 0 }}
         animate={prefersReduced ? { opacity: 0.5 } : { opacity: [0, 0.6, 0] }}
-        transition={prefersReduced ? {} : { duration: 2.2, repeat: Infinity, delay: 1.5 }}
+        transition={prefersReduced ? {} : { duration: 2.2, repeat: Infinity, delay: 1.8 }}
         aria-hidden="true"
       >
         <span
-          className="text-xs tracking-widest uppercase"
-          style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-muted)', fontSize: '0.6rem' }}
+          style={{
+            fontFamily: 'var(--font-mono)',
+            color: 'var(--color-muted)',
+            fontSize: '0.6rem',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+          }}
         >
           scroll
         </span>
