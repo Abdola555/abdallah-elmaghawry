@@ -367,16 +367,16 @@ export default function PCBTimeline() {
 
         {/* Desktop: centered spine with continuous background line */}
         <div className="hidden md:block" style={{ position: 'relative' }}>
-          {/* Continuous ghost line behind all items */}
+          {/* Continuous spine line — calc(50%) centers it exactly */}
           <div style={{
             position: 'absolute',
-            top: 0,
-            bottom: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
+            top: '40px',
+            bottom: '40px',
+            left: 'calc(50% - 1px)',
             width: '2px',
-            background: 'rgba(0,229,199,0.07)',
+            background: 'linear-gradient(to bottom, rgba(0,229,199,0.15), rgba(0,229,199,0.08) 20%, rgba(0,229,199,0.08) 80%, rgba(0,229,199,0.15))',
             zIndex: 0,
+            pointerEvents: 'none',
           }} />
           {timelineData.map((item, i) => (
             <DesktopTimelineItem key={item.id} item={item} index={i} isLast={i === timelineData.length - 1} />
@@ -387,11 +387,12 @@ export default function PCBTimeline() {
         <div className="md:hidden" style={{ position: 'relative' }}>
           <div style={{
             position: 'absolute',
-            top: 0, bottom: 0,
+            top: '40px', bottom: '40px',
             left: '17px',
             width: '2px',
-            background: 'rgba(0,229,199,0.07)',
+            background: 'linear-gradient(to bottom, rgba(0,229,199,0.15), rgba(0,229,199,0.08) 20%, rgba(0,229,199,0.08) 80%, rgba(0,229,199,0.15))',
             zIndex: 0,
+            pointerEvents: 'none',
           }} />
           {timelineData.map((item, i) => (
             <MobileTimelineItem key={item.id} item={item} isLast={i === timelineData.length - 1} />
