@@ -10,15 +10,21 @@ import { GraduationCap, Award, Globe, Briefcase, Wrench, Trophy, Code2 } from 'l
 
 function ExperienceBlock({ jobs, accent = 'var(--color-primary)' }) {
   return (
-    <div className="relative">
-      <div className="absolute left-2 top-0 bottom-0 w-px" style={{ backgroundColor: 'var(--color-border)' }} />
-      <div className="space-y-8 pl-10">
-        {jobs.map((job, i) => (
-          <article key={i} className="relative">
+    <div className="space-y-8">
+      {jobs.map((job, i) => (
+        <article key={i} className="flex gap-5">
+          {/* Left: line + dot column */}
+          <div className="flex flex-col items-center flex-shrink-0" style={{ width: '20px' }}>
             <div
-              className="absolute -left-8 top-1.5 w-2.5 h-2.5 rounded-full"
-              style={{ backgroundColor: accent }}
+              className="rounded-full flex-shrink-0"
+              style={{ width: '10px', height: '10px', marginTop: '4px', backgroundColor: accent, boxShadow: `0 0 6px ${accent}` }}
             />
+            {i < jobs.length - 1 && (
+              <div className="flex-1 w-px mt-1" style={{ backgroundColor: 'var(--color-border)', minHeight: '32px' }} />
+            )}
+          </div>
+          {/* Right: content */}
+          <div className="flex-1 pb-2">
             <div className="flex flex-wrap items-center gap-2 mb-1">
               <p className="text-xs font-mono" style={{ color: accent, fontFamily: 'var(--font-mono)' }}>
                 {job.period}
@@ -54,9 +60,9 @@ function ExperienceBlock({ jobs, accent = 'var(--color-primary)' }) {
                 </li>
               ))}
             </ul>
-          </article>
-        ))}
-      </div>
+          </div>
+        </article>
+      ))}
     </div>
   )
 }
