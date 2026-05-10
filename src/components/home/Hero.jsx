@@ -104,7 +104,7 @@ export default function Hero() {
   return (
     <section
       className="grid-backdrop relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'var(--color-bg)' }}
+      style={{ background: 'transparent' }}
     >
       {/* Ambient glow */}
       <div

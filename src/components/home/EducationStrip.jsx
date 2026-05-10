@@ -6,7 +6,7 @@ export default function EducationStrip() {
   return (
     <section
       style={{
-        background: 'var(--color-bg)',
+        background: 'transparent',
         padding: '80px 0',
         borderTop: '1px solid var(--color-border)',
       }}

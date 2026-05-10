@@ -39,7 +39,7 @@ export default function SkillsSection() {
     <section
       className="grid-backdrop"
       style={{
-        background: 'var(--color-bg)',
+        background: 'transparent',
         padding: '80px 0 100px',
         borderTop: '1px solid var(--color-border)',
       }}

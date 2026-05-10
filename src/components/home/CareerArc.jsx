@@ -210,7 +210,7 @@ export default function CareerArc() {
     <section
       ref={ref}
       style={{
-        background: 'var(--color-bg)',
+        background: 'transparent',
         padding: '80px 0',
         borderTop: '1px solid var(--color-border)',
       }}
