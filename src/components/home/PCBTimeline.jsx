@@ -264,29 +264,46 @@ function ContentCard({ item, inView, align }) {
 
 // ─── Desktop TimelineItem (centered spine, alternating sides) ─────────────────
 
-function DesktopTimelineItem({ item, index, isLast }) {
+function DesktopTimelineItem({ item, index, isLast, nextColor }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.2 })
   const prefersReduced = useReducedMotion()
   const active = prefersReduced || inView
   const color = CATEGORY[item.category].color
-  const isLeft = index % 2 === 0  // even → left side, odd → right side
+  const isLeft = index % 2 === 0
 
   return (
-    <div ref={ref} style={{ display: 'flex', alignItems: 'flex-start', gap: 0, marginBottom: isLast ? 0 : '8px' }}>
+    <div ref={ref} style={{ display: 'flex', alignItems: 'stretch', gap: 0 }}>
 
       {/* Left content area */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', paddingRight: '36px', paddingTop: '16px', paddingBottom: '40px' }}>
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', paddingRight: '36px', paddingTop: '16px', paddingBottom: isLast ? '16px' : '56px' }}>
         {isLeft && <ContentCard item={item} inView={active} align="left" />}
       </div>
 
-      {/* Center spine — node only, continuous line is in the parent */}
-      <div style={{ width: '48px', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '16px', position: 'relative', zIndex: 1 }}>
+      {/* Center spine — node + segment line below */}
+      <div style={{ width: '48px', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+        {/* Space above node */}
+        <div style={{ height: '16px' }} />
+        {/* Node shape */}
         <NodeShape category={item.category} color={color} inView={active} />
+        {/* Segment line from this node to the next — gradient from this color to next color */}
+        {!isLast && (
+          <motion.div
+            style={{
+              flex: 1,
+              width: '2px',
+              background: `linear-gradient(to bottom, ${color}, ${nextColor || color})`,
+              minHeight: '40px',
+            }}
+            initial={{ scaleY: 0, originY: 0 }}
+            animate={active ? { scaleY: 1 } : {}}
+            transition={{ delay: 0.6, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          />
+        )}
       </div>
 
       {/* Right content area */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '36px', paddingTop: '16px', paddingBottom: '40px' }}>
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '36px', paddingTop: '16px', paddingBottom: isLast ? '16px' : '56px' }}>
         {!isLeft && <ContentCard item={item} inView={active} align="right" />}
       </div>
     </div>
@@ -295,7 +312,7 @@ function DesktopTimelineItem({ item, index, isLast }) {
 
 // ─── Mobile TimelineItem (left spine, content right) ─────────────────────────
 
-function MobileTimelineItem({ item, isLast }) {
+function MobileTimelineItem({ item, isLast, nextColor }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.2 })
   const prefersReduced = useReducedMotion()
@@ -303,15 +320,29 @@ function MobileTimelineItem({ item, isLast }) {
   const color = CATEGORY[item.category].color
 
   return (
-    <div ref={ref} style={{ display: 'flex', gap: 0, marginBottom: isLast ? 0 : '8px', position: 'relative', zIndex: 1 }}>
-      {/* Left spine — node only, continuous line is in the parent */}
-      <div style={{ width: '36px', flexShrink: 0, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: '16px' }}>
+    <div ref={ref} style={{ display: 'flex', gap: 0, alignItems: 'stretch' }}>
+      {/* Left spine — node + segment line below */}
+      <div style={{ width: '36px', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ height: '16px' }} />
         <NodeShape category={item.category} color={color} inView={active} />
+        {!isLast && (
+          <motion.div
+            style={{
+              flex: 1,
+              width: '2px',
+              background: `linear-gradient(to bottom, ${color}, ${nextColor || color})`,
+              minHeight: '32px',
+            }}
+            initial={{ scaleY: 0, originY: 0 }}
+            animate={active ? { scaleY: 1 } : {}}
+            transition={{ delay: 0.55, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          />
+        )}
       </div>
 
       {/* Right content */}
       <motion.div
-        style={{ flex: 1, paddingLeft: '16px', paddingBottom: isLast ? 0 : '40px' }}
+        style={{ flex: 1, paddingLeft: '16px', paddingTop: '16px', paddingBottom: isLast ? '16px' : '48px' }}
         initial={{ opacity: 0, y: 8 }}
         animate={active ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.35, duration: 0.45 }}
@@ -356,7 +387,7 @@ function MobileTimelineItem({ item, isLast }) {
 export default function PCBTimeline() {
   return (
     <section style={{ padding: '80px 0' }} aria-label="Career timeline">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Eyebrow */}
         <p style={{
           fontFamily: 'var(--font-mono)', fontSize: '0.72rem',
@@ -365,37 +396,28 @@ export default function PCBTimeline() {
           // Career Timeline
         </p>
 
-        {/* Desktop: centered spine with continuous background line */}
+        {/* Desktop: centered spine */}
         <div className="hidden md:block" style={{ position: 'relative' }}>
-          {/* Continuous spine line — calc(50%) centers it exactly */}
-          <div style={{
-            position: 'absolute',
-            top: '40px',
-            bottom: '40px',
-            left: 'calc(50% - 1px)',
-            width: '2px',
-            background: 'linear-gradient(to bottom, rgba(0,229,199,0.15), rgba(0,229,199,0.08) 20%, rgba(0,229,199,0.08) 80%, rgba(0,229,199,0.15))',
-            zIndex: 0,
-            pointerEvents: 'none',
-          }} />
           {timelineData.map((item, i) => (
-            <DesktopTimelineItem key={item.id} item={item} index={i} isLast={i === timelineData.length - 1} />
+            <DesktopTimelineItem
+              key={item.id}
+              item={item}
+              index={i}
+              isLast={i === timelineData.length - 1}
+              nextColor={i < timelineData.length - 1 ? CATEGORY[timelineData[i + 1].category].color : null}
+            />
           ))}
         </div>
 
-        {/* Mobile: left spine with continuous background line */}
-        <div className="md:hidden" style={{ position: 'relative' }}>
-          <div style={{
-            position: 'absolute',
-            top: '40px', bottom: '40px',
-            left: '17px',
-            width: '2px',
-            background: 'linear-gradient(to bottom, rgba(0,229,199,0.15), rgba(0,229,199,0.08) 20%, rgba(0,229,199,0.08) 80%, rgba(0,229,199,0.15))',
-            zIndex: 0,
-            pointerEvents: 'none',
-          }} />
+        {/* Mobile: left spine */}
+        <div className="md:hidden">
           {timelineData.map((item, i) => (
-            <MobileTimelineItem key={item.id} item={item} isLast={i === timelineData.length - 1} />
+            <MobileTimelineItem
+              key={item.id}
+              item={item}
+              isLast={i === timelineData.length - 1}
+              nextColor={i < timelineData.length - 1 ? CATEGORY[timelineData[i + 1].category].color : null}
+            />
           ))}
         </div>
       </div>
