@@ -112,7 +112,7 @@ export default function ProjectGrid() {
 
   return (
     <section
-      style={{ background: 'var(--color-bg)', padding: '80px 0' }}
+      style={{ background: 'var(--color-bg)', padding: '80px 0', borderTop: '1px solid var(--color-border)' }}
       aria-label="Featured projects"
     >
       <div id="projects" style={{ scrollMarginTop: '80px' }} />
@@ -128,7 +128,7 @@ export default function ProjectGrid() {
             />
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
             {featuredProjects.map(project => {
               const isHighlighted =
                 hoveredSlug === null
@@ -138,7 +138,7 @@ export default function ProjectGrid() {
                   : false
 
               return (
-                <div key={project.slug} data-slug={project.slug}>
+                <div key={project.slug} data-slug={project.slug} className="h-full">
                   <ProjectCard
                     project={project}
                     onHover={setHoveredSlug}

@@ -133,11 +133,10 @@ function Connector() {
     <div
       aria-hidden="true"
       style={{
-        flex: '0 0 24px',
+        flex: '0 0 20px',
         height: '1px',
         background: 'var(--color-border)',
         alignSelf: 'center',
-        marginTop: '-16px',
       }}
     />
   )
@@ -217,7 +216,7 @@ export default function CareerArc() {
       }}
       aria-label="Career arc"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Eyebrow */}
         <p
           className="mb-8"
@@ -233,7 +232,7 @@ export default function CareerArc() {
 
         {/* Desktop: horizontal row */}
         <motion.div
-          className="hidden md:flex items-stretch gap-0"
+          className="hidden md:flex items-center gap-0"
           variants={containerVariants}
           {...motionProps}
         >

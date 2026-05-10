@@ -130,7 +130,7 @@ export default function WhatIBuild() {
       }}
       aria-label="What I design and build"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Eyebrow */}
         <p
           className="mb-10"

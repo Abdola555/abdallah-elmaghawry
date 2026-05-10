@@ -28,7 +28,7 @@ export default function ProjectCard({ project, onHover, isHighlighted, isNeighbo
         opacity: dimmed ? 0.45 : 1,
       }}
       transition={{ duration: 0.2, ease: 'easeOut' }}
-      style={{ zIndex: hovered ? 10 : 1, position: 'relative' }}
+      style={{ zIndex: hovered ? 10 : 1, position: 'relative', height: '100%' }}
     >
       <Link
         to={`/projects/${project.slug}`}
@@ -47,7 +47,7 @@ export default function ProjectCard({ project, onHover, isHighlighted, isNeighbo
               : isNeighbour
               ? '0 0 10px rgba(0,229,199,0.07)'
               : 'none',
-            minHeight: '180px',
+            minHeight: '220px',
           }}
         >
           {/* Top row */}

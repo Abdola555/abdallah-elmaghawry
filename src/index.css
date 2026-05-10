@@ -28,13 +28,34 @@ body {
   color: #E5E7EB;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* PCB grid on the body itself — visible on all pages */
+  background-image:
+    linear-gradient(to right,  rgba(0, 229, 199, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.08) 1px, transparent 1px),
+    linear-gradient(to right,  rgba(0, 229, 199, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.03) 1px, transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    16px 16px,
+    16px 16px;
 }
 
 .grid-backdrop {
+  /* PCB/EDA-style layered grid: fine sub-grid + coarse major grid */
+  background-color: #0A0E1A;
   background-image:
-    linear-gradient(to right, rgba(0, 229, 199, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 229, 199, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+    /* Major grid lines — 80px spacing, more visible */
+    linear-gradient(to right,  rgba(0, 229, 199, 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.10) 1px, transparent 1px),
+    /* Minor grid lines — 16px spacing, very subtle */
+    linear-gradient(to right,  rgba(0, 229, 199, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.035) 1px, transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    16px 16px,
+    16px 16px;
 }
 
 .glow-cyan {

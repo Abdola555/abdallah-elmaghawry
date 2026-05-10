@@ -4,7 +4,14 @@ import { journeyHighlights } from '../../data/portfolioData.js'
 
 export default function EducationStrip() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16">
+    <section
+      style={{
+        background: 'var(--color-bg)',
+        padding: '80px 0',
+        borderTop: '1px solid var(--color-border)',
+      }}
+    >
+    <div className="max-w-7xl mx-auto px-6 md:px-12">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-2">
@@ -87,6 +94,7 @@ export default function EducationStrip() {
           </div>
         ))}
       </div>
+    </div>
     </section>
   )
 }
