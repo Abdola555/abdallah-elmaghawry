@@ -11,7 +11,7 @@ export default function Layout() {
   const ctaRef = useRef(null)
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--color-bg)', color: 'var(--color-text)' }}>
+    <div className="min-h-screen flex flex-col" style={{ color: 'var(--color-text)' }}>
       <NavBar onContactOpen={() => setContactOpen(true)} ctaRef={ctaRef} />
       <main className="flex-1 pt-16">
         <Outlet />
