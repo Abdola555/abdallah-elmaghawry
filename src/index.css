@@ -30,10 +30,10 @@ body {
   -webkit-font-smoothing: antialiased;
   /* PCB/EDA-style grid — major + minor lines */
   background-image:
-    linear-gradient(to right,  rgba(0, 229, 199, 0.18) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 229, 199, 0.18) 1px, transparent 1px),
-    linear-gradient(to right,  rgba(0, 229, 199, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 229, 199, 0.07) 1px, transparent 1px);
+    linear-gradient(to right,  rgba(0, 229, 199, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.06) 1px, transparent 1px),
+    linear-gradient(to right,  rgba(0, 229, 199, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.02) 1px, transparent 1px);
   background-size:
     80px 80px,
     80px 80px,
@@ -45,12 +45,10 @@ body {
   /* PCB/EDA-style layered grid: fine sub-grid + coarse major grid */
   background-color: #0A0E1A;
   background-image:
-    /* Major grid lines — 80px spacing, more visible */
-    linear-gradient(to right,  rgba(0, 229, 199, 0.10) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 229, 199, 0.10) 1px, transparent 1px),
-    /* Minor grid lines — 16px spacing, very subtle */
-    linear-gradient(to right,  rgba(0, 229, 199, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 229, 199, 0.035) 1px, transparent 1px);
+    linear-gradient(to right,  rgba(0, 229, 199, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.06) 1px, transparent 1px),
+    linear-gradient(to right,  rgba(0, 229, 199, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 199, 0.02) 1px, transparent 1px);
   background-size:
     80px 80px,
     80px 80px,
