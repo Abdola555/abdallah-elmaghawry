@@ -8,7 +8,7 @@ export default function EducationStrip() {
       style={{
         background: 'transparent',
         padding: '80px 0',
-        borderTop: '1px solid var(--color-border)',
+        
       }}
     >
     <div className="max-w-7xl mx-auto px-6 md:px-12">

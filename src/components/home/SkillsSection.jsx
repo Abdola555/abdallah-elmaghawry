@@ -41,7 +41,7 @@ export default function SkillsSection() {
       style={{
         background: 'transparent',
         padding: '80px 0 100px',
-        borderTop: '1px solid var(--color-border)',
+        
       }}
       aria-label="Skills"
     >

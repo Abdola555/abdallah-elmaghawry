@@ -212,7 +212,7 @@ export default function CareerArc() {
       style={{
         background: 'transparent',
         padding: '80px 0',
-        borderTop: '1px solid var(--color-border)',
+        
       }}
       aria-label="Career arc"
     >

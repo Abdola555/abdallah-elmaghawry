@@ -112,7 +112,7 @@ export default function ProjectGrid() {
 
   return (
     <section
-      style={{ background: 'transparent', padding: '80px 0', borderTop: '1px solid var(--color-border)' }}
+      style={{ background: 'transparent', padding: '80px 0' }}
       aria-label="Featured projects"
     >
       <div id="projects" style={{ scrollMarginTop: '80px' }} />

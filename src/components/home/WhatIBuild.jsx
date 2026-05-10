@@ -126,7 +126,7 @@ export default function WhatIBuild() {
       style={{
         background: 'transparent',
         padding: '80px 0',
-        borderTop: '1px solid var(--color-border)',
+        
       }}
       aria-label="What I design and build"
     >
