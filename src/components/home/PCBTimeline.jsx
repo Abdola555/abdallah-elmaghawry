@@ -79,7 +79,7 @@ const timelineData = [
 
 const CATEGORY = {
   work:      { color: '#00E5C7', label: 'Experience' },
-  education: { color: '#7C3AED', label: 'Education' },
+  education: { color: '#A78BFA', label: 'Education' },
   award:     { color: '#F0A500', label: 'Award' },
   project:   { color: '#00B4A0', label: 'Project' },
 }
@@ -248,7 +248,7 @@ function TimelineItem({ item, isLast }) {
           </span>
           <span style={{
             fontFamily: 'var(--font-mono)', fontSize: '0.6rem',
-            color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em',
+            color: 'rgba(255,255,255,0.45)', letterSpacing: '0.08em',
           }}>
             {CATEGORY[item.category].label.toUpperCase()}
           </span>
