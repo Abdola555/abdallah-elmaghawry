@@ -273,22 +273,20 @@ function DesktopTimelineItem({ item, index, isLast }) {
   const isLeft = index % 2 === 0  // even → left side, odd → right side
 
   return (
-    <div ref={ref} style={{ display: 'flex', alignItems: 'flex-start', gap: 0 }}>
+    <div ref={ref} style={{ display: 'flex', alignItems: 'flex-start', gap: 0, marginBottom: isLast ? 0 : '8px' }}>
 
       {/* Left content area */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', paddingRight: '32px', paddingBottom: isLast ? 0 : '48px' }}>
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', paddingRight: '36px', paddingTop: '16px', paddingBottom: '40px' }}>
         {isLeft && <ContentCard item={item} inView={active} align="left" />}
       </div>
 
-      {/* Center spine */}
-      <div style={{ width: '48px', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <SpineSegment inView={active} color={color} minHeight={24} />
+      {/* Center spine — node only, continuous line is in the parent */}
+      <div style={{ width: '48px', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '16px', position: 'relative', zIndex: 1 }}>
         <NodeShape category={item.category} color={color} inView={active} />
-        {!isLast && <SpineSegment inView={active} color={color} minHeight={48} />}
       </div>
 
       {/* Right content area */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '32px', paddingBottom: isLast ? 0 : '48px' }}>
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '36px', paddingTop: '16px', paddingBottom: '40px' }}>
         {!isLeft && <ContentCard item={item} inView={active} align="right" />}
       </div>
     </div>
@@ -305,12 +303,10 @@ function MobileTimelineItem({ item, isLast }) {
   const color = CATEGORY[item.category].color
 
   return (
-    <div ref={ref} style={{ display: 'flex', gap: 0, marginBottom: isLast ? 0 : '8px' }}>
-      {/* Left spine */}
-      <div style={{ width: '36px', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <SpineSegment inView={active} color={color} minHeight={16} />
+    <div ref={ref} style={{ display: 'flex', gap: 0, marginBottom: isLast ? 0 : '8px', position: 'relative', zIndex: 1 }}>
+      {/* Left spine — node only, continuous line is in the parent */}
+      <div style={{ width: '36px', flexShrink: 0, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: '16px' }}>
         <NodeShape category={item.category} color={color} inView={active} />
-        {!isLast && <SpineSegment inView={active} color={color} minHeight={32} />}
       </div>
 
       {/* Right content */}
@@ -369,15 +365,34 @@ export default function PCBTimeline() {
           // Career Timeline
         </p>
 
-        {/* Desktop: centered spine */}
-        <div className="hidden md:block">
+        {/* Desktop: centered spine with continuous background line */}
+        <div className="hidden md:block" style={{ position: 'relative' }}>
+          {/* Continuous ghost line behind all items */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '2px',
+            background: 'rgba(0,229,199,0.07)',
+            zIndex: 0,
+          }} />
           {timelineData.map((item, i) => (
             <DesktopTimelineItem key={item.id} item={item} index={i} isLast={i === timelineData.length - 1} />
           ))}
         </div>
 
-        {/* Mobile: left spine */}
-        <div className="md:hidden">
+        {/* Mobile: left spine with continuous background line */}
+        <div className="md:hidden" style={{ position: 'relative' }}>
+          <div style={{
+            position: 'absolute',
+            top: 0, bottom: 0,
+            left: '17px',
+            width: '2px',
+            background: 'rgba(0,229,199,0.07)',
+            zIndex: 0,
+          }} />
           {timelineData.map((item, i) => (
             <MobileTimelineItem key={item.id} item={item} isLast={i === timelineData.length - 1} />
           ))}
