@@ -1,7 +1,7 @@
 import Hero from '../components/home/Hero.jsx'
 import WhatIBuild from '../components/home/WhatIBuild.jsx'
 import ProjectGrid from '../components/home/ProjectGrid.jsx'
-import CareerArc from '../components/home/CareerArc.jsx'
+import PCBTimeline from '../components/home/PCBTimeline.jsx'
 import EducationStrip from '../components/home/EducationStrip.jsx'
 import SkillsSection from '../components/home/SkillsSection.jsx'
 
@@ -11,7 +11,7 @@ export default function HomePage() {
       <Hero />
       <WhatIBuild />
       <ProjectGrid />
-      <CareerArc />
+      <PCBTimeline />
       <EducationStrip />
       <SkillsSection />
     </main>
