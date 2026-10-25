@@ -29,7 +29,7 @@
     display:flex;align-items:center;justify-content:space-between;
     padding:.9rem 2rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;
   }
-  .nav-logo{color:var(--cyan);letter-spacing:.08em;font-weight:500;display:flex;align-items:center;gap:.5rem}
+  .nav-logo{text-decoration:none;color:var(--cyan);letter-spacing:.08em;font-weight:500;display:flex;align-items:center;gap:.5rem}
   .nav-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:pulse 2s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
   .nav-links{display:flex;gap:2rem}
@@ -179,7 +179,7 @@
   .footer-links a{color:var(--muted);text-decoration:none;transition:color .2s}
   .footer-links a:hover{color:var(--cyan)}
 
-  section{margin-bottom:5rem}
+  section{margin-bottom:5rem;scroll-margin-top:80px}
 
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;padding:3rem 0 2rem}
@@ -202,8 +202,9 @@
 <body>
 
 <nav>
-  <div class="nav-logo"><div class="nav-dot"></div>abdallah.io</div>
+  <a class="nav-logo" href="#home" title="Back to top"><div class="nav-dot"></div>abdallah.io</a>
   <div class="nav-links">
+    <a href="#home">Home</a>
     <a href="#projects">Projects</a>
     <a href="#journey">Journey</a>
     <a href="#skills">Skills</a>
@@ -231,7 +232,7 @@
         <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Languages</span></div>
       </div>
       <div class="hero-btns">
-        <button class="btn-primary">View Projects</button>
+        <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
         <button class="btn-ghost" onclick="toggleContact()">Contact me</button>
       </div>
     </div>
@@ -587,7 +588,7 @@
 
 <script>
 function toggleContact(){document.getElementById('cp').classList.toggle('open')}
-document.addEventListener('click',e=>{const p=document.getElementById('cp');const f=document.querySelector('.contact-fab');if(!p.contains(e.target)&&!f.contains(e.target))p.classList.remove('open')})
+document.addEventListener('click',e=>{const p=document.getElementById('cp');const f=document.querySelector('.contact-fab');if(!p.contains(e.target)&&!e.target.closest('[onclick*="toggleContact"]'))p.classList.remove('open')})
 const obs=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.15})
 document.querySelectorAll('.t-node').forEach(n=>obs.observe(n))
 </script>
