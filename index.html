@@ -97,6 +97,8 @@
   .proj-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--bg2))}
   .proj-body{padding:1.2rem}
   .proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.7rem}
+  .proj-skills{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
+  .proj-skills span{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#94a3b8;border:1px solid var(--border);border-radius:4px;padding:.15rem .45rem}
   .tag{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(0,229,199,.2);border-radius:4px;padding:.15rem .5rem;letter-spacing:.04em}
   .tag.purple{color:var(--purple);background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.2)}
   .tag.amber{color:var(--amber);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2)}
@@ -148,7 +150,7 @@
   .edu-div{width:1px;height:3rem;background:var(--border);align-self:center}
 
   /* SKILLS */
-  .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:5rem}
+  .skills-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:5rem}
   .skill-group{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.25rem}
   .skill-group h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;color:var(--cyan);letter-spacing:.06em;margin-bottom:1rem;text-transform:uppercase}
   .skill-item{display:flex;align-items:center;justify-content:space-between;margin-bottom:.55rem}
@@ -218,7 +220,7 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <div>
-      <div class="role-pill">Power Electronics · SMPS · BMS · PCB Design</div>
+      <div class="role-pill">Power Electronics · SMPS · IoT · BMS · PCB Design</div>
       <h1 class="hero-name">Abdallah<br/><span>Elmaghawry</span></h1>
       <p class="hero-summary">
         Senior Hardware Engineer specialising in power electronics (SMPS, LLC, Flyback) who has grown from
@@ -261,9 +263,9 @@
       </div>
       <div class="what-card">
         <div class="what-icon">📐</div>
-        <h3>Complete Product Systems</h3>
-        <p>End-to-end electrical system ownership — requirements definition, system architecture, metrology, MCU platform, comms interfaces, vendor selection, and production test jigs.</p>
-        <span class="trace-tag">Smart Meter · DLMS/COSEM · Altium</span>
+        <h3>IoT &amp; Complete Product Systems</h3>
+        <p>End-to-end electrical system ownership for connected products — requirements, system architecture, MCU and comms modules, hardware security, vendor selection, and production test jigs.</p>
+        <span class="trace-tag">IoT · Hardware Security · DLMS/COSEM</span>
       </div>
     </div>
   </section>
@@ -273,6 +275,22 @@
     <div class="section-title">Projects</div>
     <p class="section-sub">A selection of hardware builds across power, BMS, and embedded systems.</p>
     <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#0a1a1f,#0b2a2a)">📡</div>
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag">IoT</span><span class="tag rose">Security</span><span class="tag purple">Low Power</span></div>
+          <h3>IoT &amp; Connected Device Hardware</h3>
+          <p>Hardware architecture for always-on connected devices: MCU and communication modules, field interfaces, power budgeting, and device-to-head-end data flow in AMI-type systems.</p>
+          <div class="proj-skills">
+            <span>Tamper detection</span><span>Secure element / key storage</span><span>JTAG/SWD protection</span><span>Secure firmware update</span><span>Encrypted device comms</span><span>RS-485 · Optical · Cellular/RF/PLC</span><span>DLMS/COSEM security</span>
+          </div>
+          <div class="proj-footer">
+            <span class="proj-status">Hardware architecture · Security</span>
+            <span class="proj-arrow">→</span>
+          </div>
+        </div>
+      </div>
 
       <div class="proj-card">
         <div class="proj-thumb" style="background:linear-gradient(135deg,#0f1a2e,#0a2040)">🔋</div>
@@ -529,6 +547,13 @@
         <div class="skill-item"><span class="skill-name">BMS Design</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
         <div class="skill-item"><span class="skill-name">Python / PyVISA</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
         <div class="skill-item"><span class="skill-name">C (embedded)</span><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="skill-group">
+        <h4>IoT &amp; Security</h4>
+        <div class="skill-item"><span class="skill-name">IoT HW Architecture</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Field Comms</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Tamper Detection</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Secure FW &amp; Keys</span><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
       </div>
       <div class="skill-group">
         <h4>Standards &amp; Testing</h4>
